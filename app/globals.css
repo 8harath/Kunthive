@@ -1,0 +1,254 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated to new 3-color palette: #fef3c7 (light cream), #000000 (black), #d97706 (orange) */
+  --background: #fef3c7; /* Light cream background */
+  --foreground: #000000; /* Black text */
+  --card: #fef3c7;
+  --card-foreground: #000000;
+  --popover: #fef3c7;
+  --popover-foreground: #000000;
+  --primary: #000000; /* Black for primary elements */
+  --primary-foreground: #fef3c7;
+  --secondary: #000000; /* Black for secondary elements */
+  --secondary-foreground: #fef3c7;
+  --muted: #fef3c7; /* Light cream for muted elements */
+  --muted-foreground: #000000;
+  --accent: #d97706; /* Orange for accents, icons, and animations */
+  --accent-foreground: #fef3c7;
+  --destructive: #000000;
+  --destructive-foreground: #fef3c7;
+  --border: transparent;
+  --input: #fef3c7;
+  --ring: #d97706; /* Orange for focus rings */
+  --chart-1: transparent;
+  --chart-2: transparent;
+  --chart-3: transparent;
+  --chart-4: transparent;
+  --chart-5: transparent;
+  --radius: 0rem;
+  /* Updated sidebar to use cream background instead of black */
+  --sidebar: #fef3c7; /* Light cream sidebar background */
+  --sidebar-foreground: #000000; /* Black text in sidebar */
+  --sidebar-primary: #d97706; /* Orange for active states */
+  --sidebar-primary-foreground: #fef3c7;
+  --sidebar-accent: #d97706; /* Orange for sidebar accents */
+  --sidebar-accent-foreground: #fef3c7;
+  --sidebar-border: #d97706; /* Orange border for separator */
+  --sidebar-ring: transparent;
+}
+
+.dark {
+  --background: #000000;
+  --foreground: #fef3c7;
+  --card: #000000;
+  --card-foreground: #fef3c7;
+  --popover: #000000;
+  --popover-foreground: #fef3c7;
+  --primary: #fef3c7;
+  --primary-foreground: #000000;
+  --secondary: #fef3c7;
+  --secondary-foreground: #000000;
+  --muted: #000000;
+  --muted-foreground: #fef3c7;
+  --accent: #d97706;
+  --accent-foreground: #fef3c7;
+  --destructive: #fef3c7;
+  --destructive-foreground: #000000;
+  --border: transparent;
+  --input: #000000;
+  --ring: #d97706;
+  /* Updated dark mode sidebar colors */
+  --sidebar: #fef3c7;
+  --sidebar-foreground: #000000;
+  --sidebar-primary: #d97706;
+  --sidebar-primary-foreground: #fef3c7;
+  --sidebar-accent: #d97706;
+  --sidebar-accent-foreground: #fef3c7;
+  --sidebar-border: #d97706;
+  --sidebar-ring: transparent;
+}
+
+@theme inline {
+  /* Added Space Grotesk for headings and DM Sans for body text */
+  --font-heading: "Space Grotesk", var(--font-geist-sans);
+  --font-body: "DM Sans", var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply outline-ring/50;
+  }
+  body {
+    /* Updated to use new font system */
+    @apply bg-background text-foreground leading-relaxed;
+    font-family: var(--font-body);
+  }
+
+  /* Updated typography hierarchy with creative fonts */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    @apply font-bold tracking-tight;
+  }
+
+  h1 {
+    @apply text-5xl md:text-7xl leading-none;
+  }
+
+  h2 {
+    @apply text-3xl md:text-5xl leading-tight;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl leading-snug;
+  }
+
+  p {
+    @apply leading-relaxed text-pretty;
+  }
+
+  button {
+    @apply bg-transparent border-0 p-0 m-0;
+  }
+}
+
+/* Enhanced utility classes for aesthetic design */
+@layer utilities {
+  .aesthetic-link {
+    /* Updated to use orange accent color for hover and underline */
+    @apply text-foreground hover:text-accent transition-all duration-300 cursor-pointer relative;
+  }
+
+  .aesthetic-link::after {
+    content: "";
+    /* Updated underline animation to use orange accent color */
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-accent transition-all duration-300;
+  }
+
+  .aesthetic-link:hover::after {
+    @apply w-full;
+  }
+
+  .aesthetic-section {
+    @apply py-20 px-8 max-w-6xl mx-auto;
+  }
+
+  .aesthetic-heading {
+    @apply text-4xl md:text-6xl mb-12 text-balance;
+    font-family: var(--font-heading);
+  }
+
+  .aesthetic-subheading {
+    @apply text-2xl md:text-3xl mb-8 text-balance;
+    font-family: var(--font-heading);
+  }
+
+  .aesthetic-body {
+    @apply text-lg leading-relaxed mb-8 text-pretty;
+    font-family: var(--font-body);
+  }
+
+  .sidebar-expanded {
+    @apply w-64;
+    /* Added orange border separator line */
+    border-right: 2px solid var(--sidebar-border);
+  }
+
+  .sidebar-collapsed {
+    @apply w-20;
+    /* Added orange border separator line */
+    border-right: 2px solid var(--sidebar-border);
+  }
+
+  .content-shifted {
+    @apply ml-64;
+  }
+
+  .content-normal {
+    @apply ml-20;
+  }
+
+  /* Added smooth animations */
+  .smooth-transition {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  .fade-in {
+    @apply opacity-0 translate-y-4 transition-all duration-500 ease-out;
+  }
+
+  .fade-in.visible {
+    @apply opacity-100 translate-y-0;
+  }
+
+  /* Added enhanced animations */
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out forwards;
+  }
+
+  /* Enhanced hover effects */
+  .group:hover .group-hover\:scale-110 {
+    transform: scale(1.1);
+  }
+
+  /* Backdrop blur for mobile overlay */
+  .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+  }
+}
