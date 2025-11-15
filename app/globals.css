@@ -73,9 +73,9 @@
 }
 
 @theme inline {
-  /* Added Space Grotesk for headings and DM Sans for body text */
-  --font-heading: "Space Grotesk", var(--font-geist-sans);
-  --font-body: "DM Sans", var(--font-geist-sans);
+  /* Using Geist Sans for modern, professional typography */
+  --font-heading: var(--font-geist-sans);
+  --font-body: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -250,5 +250,105 @@
   /* Backdrop blur for mobile overlay */
   .backdrop-blur-sm {
     backdrop-filter: blur(4px);
+  }
+
+  /* Mobile-specific optimizations */
+  @media (max-width: 768px) {
+    .ml-20 {
+      margin-left: 0;
+    }
+
+    .aesthetic-section {
+      @apply py-12 px-4;
+    }
+
+    .aesthetic-heading {
+      @apply text-3xl md:text-5xl;
+    }
+
+    .aesthetic-subheading {
+      @apply text-xl md:text-2xl;
+    }
+
+    .aesthetic-body {
+      @apply text-base leading-relaxed;
+    }
+  }
+
+  /* Touch-friendly tap targets */
+  @media (hover: none) and (pointer: coarse) {
+    button,
+    a,
+    input,
+    select,
+    textarea {
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
+
+  /* Prevent text size adjustment on iOS */
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  /* Smooth scrolling for all devices */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Better focus indicators for accessibility */
+  *:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  /* Optimize for mobile performance */
+  * {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+  }
+
+  /* Safe area insets for notched devices */
+  @supports (padding: max(0px)) {
+    body {
+      padding-left: max(0px, env(safe-area-inset-left));
+      padding-right: max(0px, env(safe-area-inset-right));
+      padding-bottom: max(0px, env(safe-area-inset-bottom));
+    }
+  }
+
+  /* Text rendering optimization */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Image optimization */
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Prevent layout shift */
+  img[width][height] {
+    aspect-ratio: attr(width) / attr(height);
   }
 }
