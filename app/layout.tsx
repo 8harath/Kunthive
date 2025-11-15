@@ -4,6 +4,7 @@ import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
+import { LoadingScreen } from "@/components/loading-screen"
 import "./globals.css"
 
 export const metadata: Metadata = {
@@ -334,6 +335,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="AvalonGroup" />
       </head>
       <body className={`${GeistSans.variable} ${GeistMono.variable} antialiased`}>
+        <LoadingScreen />
         <Suspense fallback={null}>{children}</Suspense>
         <Analytics />
       </body>
